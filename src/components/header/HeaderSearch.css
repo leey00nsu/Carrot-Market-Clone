@@ -1,0 +1,16 @@
+input:focus {
+  outline: none;
+}
+.header-search {
+  margin-right: 10px;
+}
+
+.header-search-bar {
+  width: 90%;
+  height: 100%;
+  background-color: #f2f3f6;
+  border: 0px;
+  border-radius: 5px;
+  padding: 0px 10px;
+  font-size: 16px;
+}

@@ -1,0 +1,81 @@
+.chatroom {
+  background-color: #f2f3f6;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 1200px;
+  height: calc(100vh - 64px);
+}
+
+.chatroom-item {
+  width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.chatroom-profile {
+  width: 8%;
+  background-color: #eaebee;
+  border-width: 0px 1px 0px 1px;
+  border-style: solid;
+  border-color: #dee0e7;
+}
+.chatroom-list {
+  width: 32%;
+  background-color: white;
+  border-width: 0px 1px 0px 0px;
+  border-style: solid;
+  border-color: #eaebee;
+  display: flex;
+  flex-direction: column;
+}
+.chatroom-chat {
+  width: 60%;
+  background-color: white;
+  border-width: 0px 1px 0px 0px;
+  border-style: solid;
+  border-color: #eaebee;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.chatroom-list-username {
+  max-width: 100%;
+  height: 8%;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #eaebee;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+}
+.chatroom-list-unread {
+  max-width: 100%;
+  height: 6%;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #eaebee;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 20px;
+}
+.chatroom-list-list {
+  max-width: 100%;
+  height: 78%;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #eaebee;
+  overflow: auto;
+}
+.chatroom-list-faq {
+  max-width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+}

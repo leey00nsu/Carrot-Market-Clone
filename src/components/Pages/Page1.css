@@ -1,0 +1,35 @@
+.page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 1200px;
+  height: 740px;
+  background-color: #fbf7f3;
+}
+
+.page-item {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 740px;
+  background-color: #fbf7f3;
+}
+
+.page-text {
+  align-self: center;
+}
+
+.page-main-text {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.page-img {
+  display: flex;
+  align-items: flex-end;
+}
+.page-img img {
+  width: 804px;
+  height: 685px;
+}

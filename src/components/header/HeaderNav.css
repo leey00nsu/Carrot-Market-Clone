@@ -1,0 +1,19 @@
+.header-nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+}
+
+ul {
+  padding: 0px;
+}
+
+.header-menu {
+  height: 21.5px;
+  line-height: 21.5px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #4d5159;
+  margin-right: 30px;
+}
