@@ -7,7 +7,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <>
-      <Header className="header" />
+      <Header />
       <div className="pages">
         <Page1 />
         <Page2 />

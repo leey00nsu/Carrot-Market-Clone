@@ -3,14 +3,27 @@
   justify-content: center;
   width: 100%;
   min-width: 1200px;
-  height: 740px;
+  height: 1000px;
   background-color: #f8f9fa;
 }
 
 .page-item {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
   width: 1200px;
-  height: 740px;
+  height: 1000px;
   background-color: inherit;
+}
+
+.page-text {
+  /* align-self: center; */
+}
+
+.page-main-text {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 32px;
 }

@@ -1,13 +1,14 @@
 import "./HeaderNav.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const HeaderNav = () => {
+  const { pathname } = useLocation();
   return (
     <ul className="header-nav">
       <li className="header-menu">
         <NavLink
           className={(navData) =>
-            navData.isActive ? "header-menu-active" : ""
+            ["/", "/articles"].includes(pathname) ? "header-menu-active" : ""
           }
           to="/"
         >
