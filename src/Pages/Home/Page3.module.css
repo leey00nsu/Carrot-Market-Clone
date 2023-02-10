@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 1200px;
+  height: 740px;
+  background-color: #f8f9fa;
+}
+
+.page-item {
+  display: flex;
+  justify-content: space-evenly;
+  width: 1200px;
+  height: 740px;
+  background-color: inherit;
+}

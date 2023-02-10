@@ -22,20 +22,8 @@
   margin-right: 40px;
 }
 
-.header-nav {
-  width: 60%;
-}
-
 @media (max-width: 1000px) {
   .header-nav {
     visibility: hidden;
   }
-}
-
-.header-search {
-  width: 26%;
-}
-
-.header-chat {
-  width: 8%;
 }

@@ -4,15 +4,15 @@
   width: 100%;
   min-width: 1200px;
   height: 740px;
-  background-color: #fbf7f3;
+  background-color: white;
 }
 
 .page-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 1200px;
   height: 740px;
-  background-color: #fbf7f3;
+  background-color: inherit;
 }
 
 .page-text {
@@ -27,9 +27,9 @@
 
 .page-img {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 .page-img img {
-  width: 804px;
-  height: 685px;
+  width: 532px;
+  height: 684px;
 }

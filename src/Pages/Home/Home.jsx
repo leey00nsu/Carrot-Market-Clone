@@ -1,5 +1,7 @@
 import Page1 from "./Page1";
-import Header from "../header/Header";
+import Page2 from "./Page2";
+import Page3 from "./Page3";
+import Header from "../../components/header/DefaultHeader/Header";
 import "./Home.css";
 
 const Home = () => {
@@ -8,8 +10,8 @@ const Home = () => {
       <Header className="header" />
       <div className="pages">
         <Page1 />
-        <Page1 />
-        <Page1 />
+        <Page2 />
+        <Page3 />
       </div>
     </>
   );

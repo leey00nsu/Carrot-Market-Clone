@@ -4,8 +4,11 @@ import "./ChatRoom.css";
 import ChatDetail from "./ChatDetail";
 import * as StompJs from "@stomp/stompjs";
 import LoginModal from "../UI/LoginModal";
+import Button from "../UI/Button";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const ChatRoom = (props) => {
+  const [enteredChatUsername, setEnteredChatUsername] = useState("");
   const [chatId, setChatId] = useState("0");
   const [chats, setChats] = useState([
     { sender: "userName", message: "hi", date: "2023-01-20" },
@@ -18,44 +21,45 @@ const ChatRoom = (props) => {
   ]);
   const client = useRef({});
 
-  const chatList = [
-    {
-      id: 1,
-      date: "2023-01-20",
-      username: "test1",
-      lastchat: "blank",
-    },
-    {
-      id: 2,
-      date: "2023-01-20",
-      username: "test2",
-      lastchat: "blank",
-    },
-    {
-      id: 3,
-      date: "2023-01-20",
-      username: "test3",
-      lastchat: "blank",
-    },
-    {
-      id: 4,
-      date: "2023-01-20",
-      username: "test4",
-      lastchat: "blank",
-    },
-    {
-      id: 5,
-      date: "2023-01-20",
-      username: "test5",
-      lastchat: "blank",
-    },
-    {
-      id: 6,
-      date: "2023-01-20",
-      username: "test6",
-      lastchat: "blanksaddaasdadsadsadasasdasasdasdassdasdad",
-    },
-  ];
+  const [chatList, setChatList] = useState([]);
+  // const chatList = [
+  //   // {
+  //   //   id: 1,
+  //   //   date: "2023-01-20",
+  //   //   username: "test1",
+  //   //   lastchat: "blank",
+  //   // },
+  //   // {
+  //   //   id: 2,
+  //   //   date: "2023-01-20",
+  //   //   username: "test2",
+  //   //   lastchat: "blank",
+  //   // },
+  //   // {
+  //   //   id: 3,
+  //   //   date: "2023-01-20",
+  //   //   username: "test3",
+  //   //   lastchat: "blank",
+  //   // },
+  //   // {
+  //   //   id: 4,
+  //   //   date: "2023-01-20",
+  //   //   username: "test4",
+  //   //   lastchat: "blank",
+  //   // },
+  //   // {
+  //   //   id: 5,
+  //   //   date: "2023-01-20",
+  //   //   username: "test5",
+  //   //   lastchat: "blank",
+  //   // },
+  //   // {
+  //   //   id: 6,
+  //   //   date: "2023-01-20",
+  //   //   username: "test6",
+  //   //   lastchat: "blanksaddaasdadsadsadasasdasasdasdassdasdad",
+  //   // },
+  // ];
 
   const connect = () => {
     client.current = new StompJs.Client({
@@ -128,6 +132,20 @@ const ChatRoom = (props) => {
     setChats((chats) => [...chats, message]);
   };
 
+  const chatUsernameHandler = (e) => {
+    setEnteredChatUsername(e.target.value);
+  };
+
+  const addChatListHandler = () => {
+    const newChat = {
+      id: chatList.length + 1,
+      date: "2023-01-20",
+      username: enteredChatUsername,
+      lastchat: "blank",
+    };
+    setChatList((prev) => [...prev, newChat]);
+  };
+
   useEffect(() => {
     connect();
 
@@ -141,7 +159,10 @@ const ChatRoom = (props) => {
       <div className="chatroom-item">
         <div className="chatroom-profile"></div>
         <div className="chatroom-list">
-          <div className="chatroom-list-username">{props.username}</div>
+          <div className="chatroom-list-username">
+            <input value={enteredChatUsername} onChange={chatUsernameHandler} />
+            <Button onClick={addChatListHandler}>대화</Button>
+          </div>
           <div className="chatroom-list-unread">안읽은 메세지만 보기</div>
           <div className="chatroom-list-list">
             <ChatList chatList={chatList} onSetchatId={setChatIdHandler} />

@@ -42,7 +42,7 @@
   padding: 0px 10px;
 }
 
-.chatdetail-chat-box-my div {
+.chatdetail-chat-box-my article {
   background-color: #ff7e37;
   padding: 10px 10px;
   border-radius: 15px;
@@ -57,7 +57,7 @@
   padding: 0px 10px;
 }
 
-.chatdetail-chat-box-other div {
+.chatdetail-chat-box-other article {
   background-color: #f2f3f6;
   border-radius: 15px;
   padding: 10px 10px;

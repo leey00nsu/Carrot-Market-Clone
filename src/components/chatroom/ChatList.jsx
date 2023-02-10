@@ -1,3 +1,4 @@
+import ProfileIcon from "../UI/ProfileIcon";
 import "./ChatList.css";
 
 const ChatList = (props) => {
@@ -16,9 +17,7 @@ const ChatList = (props) => {
           }}
         >
           <div className="chatlist-item">
-            <div className="chatlist-profile-box">
-              <img className="chatlist-profile" src="img/profile_default.png" />
-            </div>
+            <ProfileIcon />
             <div className="chatlist-info">
               <div className="chatlist-info-top">
                 <div className="chatlist-info-username">{chat.username}</div>

@@ -2,6 +2,8 @@ input:focus {
   outline: none;
 }
 .header-search {
+  width: 26%;
+
   margin-right: 10px;
 }
 

@@ -1,32 +1,44 @@
 import "./ChatDetail.css";
 import ChatInput from "./ChatInput";
 import { useRef } from "react";
+import ProfileIcon from "../UI/ProfileIcon";
 
 const ChatDetail = (props) => {
   const scrollRef = useRef();
+
+  let prevSender = null;
   const chats = props.chats.map((chat, index) => {
+    let result = "";
     if (chat.sender == props.username)
-      return (
+      result = (
         <div key={index} className="chatdetail-chat-box-my">
-          <div>{chat.message}</div>
+          <article>{chat.message}</article>
         </div>
       );
-    else
-      return (
-        <div key={index} className="chatdetail-chat-box-other">
-          <section className="chatlist-profile-box">
-            <img className="chatlist-profile" src="img/profile_default.png" />
-          </section>
-          <div>{chat.message}</div>
-        </div>
-      );
+    else {
+      if (chat.sender !== prevSender) {
+        result = (
+          <div key={index} className="chatdetail-chat-box-other">
+            <ProfileIcon />
+            <article>{chat.message}</article>
+          </div>
+        );
+      } else {
+        result = (
+          <div key={index} className="chatdetail-chat-box-other">
+            <ProfileIcon hide />
+            <article>{chat.message}</article>
+          </div>
+        );
+      }
+    }
+    prevSender = chat.sender;
+    return result;
   });
   return (
     <div className="chatdetail">
       <div className="chatdetail-header">
-        <div className="header-profile-box">
-          <img className="header-profile" src="img/profile_default.png" />
-        </div>
+        <ProfileIcon />
         <div className="header-profile-username">{props.chatId}</div>
       </div>
       <div ref={scrollRef} className="chatdetail-chat">

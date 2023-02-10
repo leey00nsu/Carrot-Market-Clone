@@ -1,9 +1,7 @@
 import "./App.css";
-import Header from "./components/header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Pages/Home";
-import Chat from "./components/Pages/Chat";
-
+import Home from "./Pages/Home/Home";
+import Chat from "./Pages/Chat/Chat";
 function App() {
   return (
     <div className="main">
