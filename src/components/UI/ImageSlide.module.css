@@ -1,6 +1,9 @@
 .container {
-  width: 677px;
+  width: 740px;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-box {
@@ -9,6 +12,18 @@
   align-self: center;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.imgs {
+  display: flex;
+  overflow: hidden;
+  width: calc(677 * 3px);
+  height: 500px;
+  transition: 0.5s;
+}
+
+.slide {
+  transform: translateX(-677px);
 }
 
 .img {
