@@ -4,50 +4,21 @@ import "./Chat.css";
 import LoginModal from "../../components/UI/LoadingModal";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
-
+import { useSelector } from "react-redux";
 const Chat = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [username, setUsername] = useState("");
+  const username = useSelector((state) => state.username);
 
-  useEffect(() => {
-    const sessionIsLogin = sessionStorage.getItem("isLogin");
-
-    console.log(sessionIsLogin);
-
-    if (sessionIsLogin != null) {
-      setIsLogin(true);
-      setUsername(sessionIsLogin);
-    }
-
-    setIsLoading(false);
-  }, []);
-
-  const loginHandler = (username) => {
-    sessionStorage.setItem("isLogin", username);
-    setIsLogin(true);
-    setUsername(username);
-  };
-
-  let content = <LoadingSpinner />;
-
-  if (!isLoading) {
-    content = (
-      <>
-        <ChatHeader username={username} />
-        <div className="pages">
-          <ChatRoom username={username} />
-        </div>
-      </>
-    );
-  }
-
-  return (
+  const content = (
     <>
-      {/* {!isLogin && !isLoading && <LoginModal onlogin={loginHandler} />} */}
-      {content}
+      <ChatHeader username={username} />
+      <div className="pages">
+        <ChatRoom username={username} />
+      </div>
     </>
   );
+
+  return <>{content}</>;
 };
 
 export default Chat;

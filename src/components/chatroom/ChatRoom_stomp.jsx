@@ -4,7 +4,6 @@ import "./ChatRoom.css";
 import ChatDetail from "./ChatDetail";
 import * as StompJs from "@stomp/stompjs";
 import Button from "../UI/Button";
-import io from "socket.io-client";
 
 // 채팅할 상대가 없을 때 표시되는 아이콘 svg
 const chatlogo = (
@@ -29,26 +28,54 @@ const chatlogo = (
 const ChatRoom = (props) => {
   const [enteredChatUsername, setEnteredChatUsername] = useState("");
   const [chatId, setChatId] = useState("0");
-  const [chats, setChats] = useState([]);
-  const socket = io("http://localhost:3001", {
-    cors: { origin: "http://localhost" },
-  });
-
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      console.log(data.message);
-    });
-
-    return () => {
-      socket.close();
-    };
-  }, [socket]);
-
-  socket?.on("connect", () => {
-    // console.log("connected to server");
-  });
+  const [chats, setChats] = useState([
+    { sender: "userName", message: "hi", date: "2023-01-20" },
+    {
+      sender: "test1",
+      message: "hiasdsasdaddss",
+      date: "2023-01-20",
+    },
+    { sender: "test1", message: "hi", date: "2023-01-20" },
+  ]);
+  const client = useRef({});
 
   const [chatList, setChatList] = useState([]);
+
+  const connect = () => {
+    client.current = new StompJs.Client({
+      brokerURL: "ws://localhost:30002/ws",
+      debug: function (str) {
+        console.log(str);
+      },
+      onConnect: () => {
+        console.log("success");
+        subscribe();
+      },
+    });
+    client.current.activate();
+  };
+
+  client.current.onConnect = function (frame) {
+    console.log(frame);
+  };
+
+  const subscribe = () => {
+    client.current.subscribe("/sub/chat/{roomId}", ({ body }) => {
+      console.log(body);
+      setChats((chats) => [...chats, JSON.parse(body)]);
+    });
+  };
+
+  const publish = (message) => {
+    client.current.publish({
+      destination: "/pub/chat",
+      body: JSON.stringify({ chatId: chatId, message }),
+    });
+  };
+
+  const disconnect = () => {
+    client.current.deactivate();
+  };
 
   const setChatIdHandler = (chatId) => {
     setChatId(chatId);
@@ -56,7 +83,6 @@ const ChatRoom = (props) => {
 
   const addChatsHandler = (message) => {
     // publish(message);
-    socket?.emit("send_message", { message: message });
     setChats((chats) => [...chats, message]);
   };
 
@@ -73,6 +99,14 @@ const ChatRoom = (props) => {
     };
     setChatList((prev) => [...prev, newChat]);
   };
+
+  useEffect(() => {
+    connect();
+
+    console.log("connetion");
+
+    return () => disconnect();
+  }, []);
 
   return (
     <div className="chatroom">

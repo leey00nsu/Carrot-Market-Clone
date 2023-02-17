@@ -2,13 +2,15 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { isLogin: false, token: null, refreshToken: null },
+  initialState: { isLogin: false, username: null },
   reducers: {
     login(state, action) {
       state.isLogin = true;
+      state.username = action.payload.username;
     },
     logout(state, action) {
       state.isLogin = false;
+      state.username = null;
     },
   },
 });

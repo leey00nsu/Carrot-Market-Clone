@@ -67,11 +67,9 @@ const Auth = () => {
           },
           { headers: { "Content-Type": "application/json" } }
         );
-        console.log(response.data);
         setFormState("signupDone");
       } catch (error) {
         const message = error.response.data.error.message;
-        console.log(message);
         if (message === "EMAIL_EXISTS") {
           setIdError("이미 존재하는 아이디입니다.");
         }
@@ -128,7 +126,6 @@ const Auth = () => {
             headers: { "Content-Type": "application/json" },
           }
         );
-        // console.log(response.data);
         const token = response.data.idToken;
         const refreshToken = response.data.refreshToken;
         // 로그인 완료 토큰 저장
@@ -136,10 +133,8 @@ const Auth = () => {
           path: "/",
         });
         localStorage.setItem("token", token);
-        // dispatch(authActions.login({ token: token }));
       } catch (error) {
         const message = error.response.data.error.message;
-        console.log(message);
         if (message === "EMAIL_NOT_FOUND" || message === "INVALID_PASSWORD") {
           setPasswordError("잘못된 유저 정보입니다.");
         }
@@ -188,6 +183,7 @@ const Auth = () => {
           type="email"
           onChange={idChangeHandler}
           value={enteredId}
+          placeholder="abc@abc.com"
           className={classes["form__input"]}
           id="id"
         />
@@ -195,6 +191,7 @@ const Auth = () => {
 
         <label htmlFor="password">비밀번호</label>
         <input
+          type="password"
           onChange={passwordChangeHandler}
           value={enteredPassword}
           className={classes["form__input"]}
@@ -213,6 +210,7 @@ const Auth = () => {
         <label htmlFor="id">아이디</label>
         <input
           type="email"
+          placeholder="abc@abc.com"
           onChange={idChangeHandler}
           value={enteredId}
           className={classes["form__input"]}
@@ -221,6 +219,7 @@ const Auth = () => {
         <p className={classes["form__text--error"]}>{idError}</p>
         <label htmlFor="password">비밀번호</label>
         <input
+          type="password"
           onChange={passwordChangeHandler}
           value={enteredPassword}
           className={classes["form__input"]}
@@ -230,6 +229,7 @@ const Auth = () => {
 
         <label htmlFor="password">비밀번호 확인</label>
         <input
+          type="password"
           onChange={passwordConfirmChangeHandler}
           value={enteredPasswordConfirm}
           className={classes["form__input"]}
