@@ -45,7 +45,7 @@ const ChatRoom = (props) => {
     client.current = new StompJs.Client({
       brokerURL: "ws://localhost:30002/ws",
       debug: function (str) {
-        console.log(str);
+        console.log(str); 
       },
       onConnect: () => {
         console.log("success");
