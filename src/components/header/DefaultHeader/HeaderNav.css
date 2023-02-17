@@ -18,8 +18,15 @@ ul {
   font-weight: 700;
   color: #4d5159;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .header-menu-active {
   color: #fe6f10;
+}
+
+@media (max-width: 1050px) {
+  .header-nav {
+    display: none;
+  }
 }

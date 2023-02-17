@@ -2,17 +2,24 @@ input:focus {
   outline: none;
 }
 .header-search {
-  width: 26%;
+  width: 300px;
 
   margin-right: 10px;
 }
 
 .header-search-bar {
-  width: 90%;
+  box-sizing: border-box;
+  width: 100%;
   height: 100%;
   background-color: #f2f3f6;
   border: 0px;
   border-radius: 5px;
   padding: 0px 10px;
   font-size: 16px;
+}
+
+@media (max-width: 1050px) {
+  .header-search {
+    display: none;
+  }
 }

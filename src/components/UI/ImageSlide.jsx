@@ -29,18 +29,26 @@ const ImageSlide = () => {
 
   return (
     <div className={classes.container}>
-      <FiChevronLeft onClick={onPrevHandler} size="30" />
+      <FiChevronLeft
+        className={classes.button}
+        onClick={onPrevHandler}
+        size="30"
+      />
       <div className={classes["img-box"]}>
         <div
           className={classes.imgs}
           style={{ transform: `translateX(${translation}px)` }}
         >
-          <img className={classes.img} src="img/profile_default.png" />
-          <img className={classes.img} src="img/twitter.png" />
-          <img className={classes.img} src="img/facebook.png" />
+          <img className={classes.img} src="img/cat1.jpeg" />
+          <img className={classes.img} src="img/deer1.jpeg" />
+          <img className={classes.img} src="img/dog1.jpeg" />
         </div>
       </div>
-      <FiChevronRight onClick={onNextHandler} size="30" />
+      <FiChevronRight
+        className={classes.button}
+        onClick={onNextHandler}
+        size="30"
+      />
     </div>
   );
 };

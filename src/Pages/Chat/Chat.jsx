@@ -1,7 +1,7 @@
 import ChatRoom from "../../components/chatroom/ChatRoom";
 import ChatHeader from "../../components/header/ChatHeader/ChatHeader";
 import "./Chat.css";
-import LoginModal from "../../components/UI/LoginModal";
+import LoginModal from "../../components/UI/LoadingModal";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
 
@@ -44,7 +44,7 @@ const Chat = () => {
 
   return (
     <>
-      {!isLogin && !isLoading && <LoginModal onlogin={loginHandler} />}
+      {/* {!isLogin && !isLoading && <LoginModal onlogin={loginHandler} />} */}
       {content}
     </>
   );

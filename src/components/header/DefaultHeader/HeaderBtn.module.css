@@ -1,5 +1,5 @@
 .header-chat {
-  width: 8%;
+  width: 80px;
   border-width: 1px;
   border-style: solid;
   border-color: #d1d3d8;
@@ -13,8 +13,27 @@
   text-decoration: none;
 }
 
+.container {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
 .header-chat:hover {
   cursor: pointer;
   background-color: #f2f3f6;
   color: gray;
+}
+
+.button__toggle {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .header-chat {
+    display: none;
+  }
+  .button__toggle {
+    display: block;
+  }
 }

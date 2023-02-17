@@ -1,11 +1,20 @@
 import "./ChatDetail.css";
 import ChatInput from "./ChatInput";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import ProfileIcon from "../UI/ProfileIcon";
 
 const ChatDetail = (props) => {
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
 
+  const scrollHandler = () => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  };
+
+  useEffect(() => {
+    scrollHandler();
+  }, [props.chats]);
+
+  // 이전 메시지와 발송인이 같으면 메시지 옆에 아이콘을 보이지 않음
   let prevSender = null;
   const chats = props.chats.map((chat, index) => {
     let result = "";

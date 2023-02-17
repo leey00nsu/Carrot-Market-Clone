@@ -3,7 +3,7 @@ import ChatList from "./ChatList";
 import "./ChatRoom.css";
 import ChatDetail from "./ChatDetail";
 import * as StompJs from "@stomp/stompjs";
-import LoginModal from "../UI/LoginModal";
+import LoginModal from "../UI/LoadingModal";
 import Button from "../UI/Button";
 import LoadingSpinner from "../UI/LoadingSpinner";
 

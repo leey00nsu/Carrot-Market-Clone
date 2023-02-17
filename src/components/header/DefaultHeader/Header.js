@@ -1,20 +1,21 @@
-import "./Header.css";
+import classes from "./Header.module.css";
 import HeaderNav from "./HeaderNav";
 import HeaderSearch from "./HeaderSearch";
-import HeaderChat from "./HeaderChat";
+import HeaderBtn from "./HeaderBtn";
 import { Link } from "react-router-dom";
-import Button from "../../UI/Button";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const isLogin = useSelector((state) => state.isLogin);
   return (
-    <div className="header">
-      <div className="header-item">
-        <Link to="/" className="header-logo">
-          <img className="header-logo" src="img/cm_logo.png"></img>
+    <div className={classes.header}>
+      <div className={classes["header-item"]}>
+        <Link to="/" className={classes["header-logo"]}>
+          <img className={classes["header-logo"]} src="img/cm_logo.png"></img>
         </Link>
         <HeaderNav />
         <HeaderSearch />
-        <HeaderChat />
+        <HeaderBtn isLogin={isLogin} />
       </div>
     </div>
   );
