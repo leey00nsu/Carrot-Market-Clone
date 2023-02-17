@@ -60,8 +60,8 @@ function App() {
           );
 
           //유저 로그인 완료
-          console.log(response.data.users[0].email);
-          dispatch(authActions.login());
+          const username = response.data.users[0].email;
+          dispatch(authActions.login({ username: username }));
         } catch (error) {
           console.log(error);
         }
